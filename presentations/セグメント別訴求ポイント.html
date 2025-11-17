@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>セグメント別SBI証券訴求ポイント | SBI証券</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, sans-serif;
+            background: #f5f5f5;
+            overflow: hidden;
+        }
+
+        .presentation {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            display: none;
+            background: linear-gradient(135deg, #003A70 0%, #005A9C 100%);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .slide-header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #003A70;
+        }
+
+        .logo span {
+            color: #FF8C00;
+        }
+
+        .slide-number {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .slide-content {
+            flex: 1;
+            padding: 40px 60px;
+            overflow-y: auto;
+            color: white;
+        }
+
+        .slide-title {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: white;
+            border-left: 8px solid #FF8C00;
+            padding-left: 25px;
+        }
+
+        .slide-subtitle {
+            font-size: 28px;
+            margin-bottom: 40px;
+            color: #FFD700;
+            padding-left: 33px;
+        }
+
+        /* Title Slide */
+        .title-slide .slide-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .main-title {
+            font-size: 72px;
+            font-weight: bold;
+            margin-bottom: 40px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+        }
+
+        .main-subtitle {
+            font-size: 36px;
+            margin-bottom: 60px;
+            color: #FFD700;
+        }
+
+        /* Segment Overview */
+        .segment-overview-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 0 33px;
+        }
+
+        .segment-overview-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            color: #333;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .segment-overview-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .segment-overview-card h3 {
+            color: #003A70;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .segment-overview-card .icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .segment-overview-card .key-benefit {
+            font-size: 24px;
+            font-weight: bold;
+            color: #FF8C00;
+            margin: 15px 0;
+        }
+
+        /* Segment Detail */
+        .segment-detail {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 20px 33px;
+            color: #333;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .benefit-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .benefit-card {
+            background: linear-gradient(135deg, #FFF4E6 0%, #FFFFFF 100%);
+            border-radius: 12px;
+            padding: 25px;
+            border-left: 5px solid #FF8C00;
+        }
+
+        .benefit-card h4 {
+            color: #003A70;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .benefit-number {
+            font-size: 56px;
+            font-weight: bold;
+            color: #FF8C00;
+            margin: 15px 0;
+        }
+
+        .benefit-text {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .comparison-box {
+            background: #F0F8FF;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 15px;
+            border: 2px solid #003A70;
+        }
+
+        .comparison-box strong {
+            color: #FF4444;
+        }
+
+        /* Simulation Box */
+        .simulation-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 20px 33px;
+            color: #333;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .simulation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .simulation-item {
+            text-align: center;
+            padding: 30px;
+            border-radius: 12px;
+        }
+
+        .simulation-item.sbi {
+            background: linear-gradient(135deg, #E8F4F8 0%, #FFFFFF 100%);
+            border: 3px solid #00A040;
+        }
+
+        .simulation-item.competitor {
+            background: linear-gradient(135deg, #FFE8E8 0%, #FFFFFF 100%);
+            border: 3px solid #FF4444;
+        }
+
+        .simulation-item h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .simulation-amount {
+            font-size: 64px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .simulation-amount.positive {
+            color: #00A040;
+        }
+
+        .simulation-amount.negative {
+            color: #FF4444;
+        }
+
+        .difference-highlight {
+            background: linear-gradient(135deg, #FF8C00 0%, #FFA500 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .difference-highlight .amount {
+            font-size: 72px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        /* Key Points */
+        .key-points-list {
+            list-style: none;
+            margin-top: 25px;
+        }
+
+        .key-points-list li {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border-left: 5px solid #FF8C00;
+            font-size: 20px;
+            line-height: 1.6;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .key-points-list li strong {
+            color: #003A70;
+            font-size: 24px;
+        }
+
+        /* Talk Points */
+        .talk-point {
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFFFFF 100%);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 20px 0;
+            border-left: 6px solid #FFD700;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .talk-point h4 {
+            color: #003A70;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .talk-point p {
+            font-size: 19px;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        /* Navigation */
+        .nav-controls {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: rgba(255, 140, 0, 0.9);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .nav-btn:hover {
+            background: #FF8C00;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        .nav-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .progress-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 5px;
+            background: #FF8C00;
+            transition: width 0.3s;
+            z-index: 1000;
+        }
+
+        /* Profile Box */
+        .profile-box {
+            background: linear-gradient(135deg, #E8F4F8 0%, #FFFFFF 100%);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 2px solid #003A70;
+        }
+
+        .profile-box h3 {
+            color: #003A70;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .profile-box ul {
+            list-style: none;
+            font-size: 18px;
+            line-height: 2;
+        }
+
+        .profile-box li:before {
+            content: "▸ ";
+            color: #FF8C00;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        <!-- Slide 1: Title -->
+        <div class="slide active title-slide">
+            <div class="slide-header">
+                <div class="logo">SBI<span>証券</span></div>
+                <div class="slide-number">1 / 8</div>
+            </div>
+            <div class="slide-content">
+                <div class="main-title">セグメント別<br>SBI証券訴求ポイント</div>
+                <div class="main-subtitle">お客様一人ひとりに響くメッセージ</div>
+                <div style="background: rgba(255, 140, 0, 0.9); padding: 30px 60px; border-radius: 15px; font-size: 28px; font-weight: bold; box-shadow: 0 4px 20px rgba(0,0,0,0.2); max-width: 900px;">
+                    具体的な数字で示す、比較で納得させる、<br>不安を解消する - これが成約の秘訣
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Segment Overview -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="logo">SBI<span>証券</span></div>
+                <div class="slide-number">2 / 8</div>
+            </div>
+            <div class="slide-content">
+                <div class="slide-title">6つの顧客セグメント</div>
+                <div class="slide-subtitle">それぞれに最適な訴求ポイント</div>
+                <div class="segment-overview-grid">
+                    <div class="segment-overview-card">
+                        <div class="icon">🎯</div>
+                        <h3>若年層<br>(20-30代)</h3>
+                        <div class="key-benefit">30年で180万円分<br>ポイント還元</div>
+                        <p style="font-size: 18px; margin-top: 15px;">クレカ積立5.0%還元の威力</p>
+                    </div>
+                    <div class="segment-overview-card">
+                        <div class="icon">💼</div>
+                        <h3>中堅層<br>(40-50代)</h3>
+                        <div class="key-benefit">退職金運用で<br>280万円の差</div>
+                        <p style="font-size: 18px; margin-top: 15px;">老後資金の効率的な準備</p>
+                    </div>
+                    <div class="segment-overview-card">
+                        <div class="icon">👴</div>
+                        <h3>シニア層<br>(60代以上)</h3>
+                        <div class="key-benefit">年金補完で<br>800万円の差</div>
+                        <p style="font-size: 18px; margin-top: 15px;">手数料で目減りさせない</p>
+                    </div>
+                    <div class="segment-overview-card">
+                        <div class="icon">💎</div>
+                        <h3>富裕層<br>(1億円以上)</h3>
+                        <div class="key-benefit">30年で<br>3,000万円の差</div>
+                        <p style="font-size: 18px; margin-top: 15px;">大きな資産ほどコストが重要</p>
+                    </div>
+                    <div class="segment-overview-card">
+                        <div class="icon">🔰</div>
+                        <h3>投資初心者</h3>
+                        <div class="key-benefit">月100円から<br>始められる</div>
+                        <p style="font-size: 18px; margin-top: 15px;">失敗しても痛くない金額</p>
+                    </div>
+                    <div class="segment-overview-card">
+                        <div class="icon">📈</div>
+                        <h3>NISA既存利用者</h3>
+                        <div class="key-benefit">移行で<br>162万円お得</div>
+                        <p style="font-size: 18px; margin-top: 15px;">今の証券会社で満足ですか？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Young Segment -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="logo">SBI<span>証券</span></div>
+                <div class="slide-number">3 / 8</div>
+            </div>
+            <div class="slide-content">
+                <div class="slide-title">若年資産形成層（20-30代）</div>
+                <div class="segment-detail">
+                    <div class="profile-box">
+                        <h3>顧客プロファイル</h3>
+                        <ul>
+                            <li>年齢: 25-39歳</li>
+                            <li>金融資産: 100-500万円</li>
+                            <li>投資期間: 30-40年</li>
+                            <li>デジタルネイティブ、リスク許容度高</li>
+                        </ul>
+                    </div>
+                    <div class="benefit-cards">
+                        <div class="benefit-card">
+                            <h4>クレカ積立5.0%還元</h4>
+                            <div class="benefit-number">180万円</div>
+                            <div class="benefit-text">
+                                月10万円×30年間のポイント還元<br>
+                                <div class="comparison-box">
+                                    <strong>楽天証券: 36万円</strong><br>
+                                    差額144万円 = 世界一周旅行も可能！
+                                </div>
+                            </div>
+                        </div>
+                        <div class="benefit-card">
+                            <h4>30年後の総コスト差</h4>
+                            <div class="benefit-number">1,000万円</div>
+                            <div class="benefit-text">
+                                SBI証券 vs 対面証券<br>
+                                <div class="comparison-box">
+                                    マイホーム頭金、教育費、<br>
+                                    老後資金...何でも実現可能
+                                </div>
+                            </div>
+                        </div>
+                        <div class="benefit-card">
+                            <h4>IPOで一攫千金</h4>
+                            <div class="benefit-number">業界No.1</div>
+                            <div class="benefit-text">
+                                年間89社のIPO取扱<br>
+                                <div class="comparison-box">
+                                    1回の当選で40万円の利益も<br>
+                                    若いうちからポイント貯蓄
+                                </div>
+                            </div>
+                        </div>
+                        <div class="benefit-card">
+                            <h4>スマホで超簡単</h4>
+                            <div class="benefit-number">3分</div>
+                            <div class="benefit-text">
+                                設定完了まで3分<br>
+                                <div class="comparison-box">
+                                    対面証券: 店舗訪問必要<br>
+                                    SBI: 通勤中にサクッと完了
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Middle-aged Segment -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="logo">SBI<span>証券</span></div>
+                <div class="slide-number">4 / 8</div>
+            </div>
+            <div class="slide-content">
+                <div class="slide-title">中堅資産蓄積層（40-50代）</div>
+                <div class="simulation-box">
+                    <h2 style="color: #003A70; font-size: 36px; margin-bottom: 30px; text-align: center;">退職金2,000万円を20年運用した場合</h2>
+                    <div class="simulation-grid">
+                        <div class="simulation-item sbi">
+                            <h3 style="color: #003A70;">SBI証券</h3>
+                            <div style="font-size: 20px; color: #666; margin: 15px 0;">
+                                信託報酬: 0.1%<br>
+                                低コストインデックス
+                            </div>
+                            <div class="simulation-amount positive">2,920万円</div>
+                            <div style="font-size: 18px; color: #666;">
+                                手数料: 約40万円<br>
+                                実質運用益: +920万円
+                            </div>
+                        </div>
+                        <div class="simulation-item competitor">
+                            <h3 style="color: #003A70;">対面証券</h3>
+                            <div style="font-size: 20px; color: #666; margin: 15px 0;">
+                                信託報酬: 1.0%<br>
+                                アクティブファンド
+                            </div>
+                            <div class="simulation-amount negative">2,640万円</div>
+                            <div style="font-size: 18px; color: #666;">
+                                手数料: 約400万円<br>
+                                実質運用益: +640万円
+                            </div>
+                        </div>
+                    </div>
+                    <div class="difference-highlight">
+                        <div style="font-size: 32px;">20年間の差額</div>
+                        <div class="amount">280万円！</div>
+                        <div style="font-size: 22px;">今から付き合う証券会社を変えれば、退職金運用も安心</div>
+                    </div>
+                </div>
+                <div class="segment-detail" style="margin-top: 20px;">
+                    <h3 style="color: #003A70; font-size: 28px; margin-bottom: 20px;">中堅層の3大メリット</h3>
+                    <ul class="key-points-list">
+                        <li><strong>豊富な商品</strong> - 2,600本から最適分散、ライフステージに応じて調整可能</li>
+                        <li><strong>充実した情報</strong> - 対面証券と同レベルの情報をコスト1/10で入手</li>
+                        <li><strong>教育資金と老後資金の両立</strong> - 低コストだからこそ両方準備できる</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Senior & Wealthy Segments -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="logo">SBI<span>証券</span></div>
+                <div class="slide-number">5 / 8</div>
+            </div>
+            <div class="slide-content">
+                <div class="slide-title">シニア層 & 富裕層</div>
+                <div class="benefit-cards" style="margin: 0 33px;">
+                    <div class="benefit-card" style="grid-column: span 2;">
+                        <h4 style="font-size: 32px; text-align: center; margin-bottom: 30px;">シニア資産活用層（60代以上）</h4>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                            <div>
+                                <h5 style="color: #003A70; font-size: 24px; margin-bottom: 15px;">年金補完で800万円の差</h5>
+                                <div style="font-size: 18px; line-height: 1.8;">
+                                    <strong style="color: #FF8C00;">SBI証券（20年運用）:</strong><br>
+                                    合計受取: 3,200万円<br>
+                                    <strong style="color: #FF4444;">対面証券（20年運用）:</strong><br>
+                                    合計受取: 2,400万円<br>
+                                    <div style="margin-top: 15px; padding: 15px; background: #FFF4E6; border-radius: 8px; border: 2px solid #FF8C00;">
+                                        <strong style="font-size: 28px; color: #FF8C00;">差額: 800万円</strong><br>
+                                        お孫さんへのお小遣いも余裕
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <h5 style="color: #003A70; font-size: 24px; margin-bottom: 15px;">意外と簡単</h5>
+                                <ul style="font-size: 18px; line-height: 2; list-style: none;">
+                                    <li>✓ 家族と一緒に設定</li>
+                                    <li>✓ 一度設定すれば自動</li>
+                                    <li>✓ 電話サポート充実</li>
+                                    <li>✓ 営業電話なし</li>
+                                </ul>
+                                <div class="talk-point" style="margin-top: 20px;">
+                                    <p style="font-size: 16px;">"70歳ですが、息子に手伝ってもらって設定。今は何もせず毎月自動積立。とても楽です"</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="benefit-card" style="grid-column: span 2;">
+                        <h4 style="font-size: 32px; text-align: center; margin-bottom: 30px;">富裕層（資産1億円以上）</h4>
+                        <div class="simulation-box" style="margin: 0; padding: 30px;">
+                            <h3 style="color: #003A70; font-size: 28px; text-align: center; margin-bottom: 25px;">1億円を30年運用した場合の手数料比較</h3>
+                            <div style="display: flex; justify-content: space-around; align-items: center;">
+                                <div style="text-align: center;">
+                                    <div style="font-size: 24px; color: #003A70; margin-bottom: 15px;">SBI証券<br>(信託報酬0.1%)</div>
+                                    <div style="font-size: 56px; font-weight: bold; color: #00A040; margin: 15px 0;">約300万円</div>
+                                    <div style="font-size: 18px; color: #666;">30年後: 2億3,700万円</div>
+                                </div>
+                                <div style="font-size: 72px; color: #FF8C00; font-weight: bold;">VS</div>
+                                <div style="text-align: center;">
+                                    <div style="font-size: 24px; color: #003A70; margin-bottom: 15px;">対面証券<br>(信託報酬1.0%)</div>
+                                    <div style="font-size: 56px; font-weight: bold; color: #FF4444; margin: 15px 0;">約3,000万円</div>
+                                    <div style="font-size: 18px; color: #666;">30年後: 2億700万円</div>
+                                </div>
+                            </div>
+                            <div class="difference-highlight" style="margin-top: 30px;">
+                                <div class="amount">差額: 3,000万円</div>
+                                <div style="font-size: 24px;">= 高級車10台分 = 高級マンション1戸分</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Beginner & Existing NISA -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="logo">SBI<span>証券</span></div>
+                <div class="slide-number">6 / 8</div>
+            </div>
+            <div class="slide-content">
+                <div class="slide-title">投資初心者 & NISA既存利用者</div>
+                <div class="segment-detail">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                        <div>
+                            <h3 style="color: #003A70; font-size: 28px; margin-bottom: 20px; text-align: center;">🔰 投資初心者層</h3>
+                            <div class="benefit-card">
+                                <h4>月100円から始められる</h4>
+                                <div class="benefit-number">100円</div>
+                                <div class="benefit-text">
+                                    = 缶コーヒー1本分<br>
+                                    失敗しても痛くない金額
+                                </div>
+                            </div>
+                            <div class="benefit-card">
+                                <h4>1,100万人の仲間</h4>
+                                <div class="benefit-number">1,100万</div>
+                                <div class="benefit-text">
+                                    日本人の約10人に1人<br>
+                                    みんなが選ぶ理由がある
+                                </div>
+                            </div>
+                            <div class="talk-point">
+                                <h4>トークポイント</h4>
+                                <p>"月100円なら失敗しても痛くないですよね？まずは体験してみて、慣れてきたら増額すればいいんです。大切なのは、今日始めることです。"</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 style="color: #003A70; font-size: 28px; margin-bottom: 20px; text-align: center;">📈 NISA既存利用者</h3>
+                            <div class="benefit-card">
+                                <h4>楽天証券から移行</h4>
+                                <div class="benefit-number">162万円</div>
+                                <div class="benefit-text">
+                                    30年間のポイント差額<br>
+                                    <div class="comparison-box">
+                                        SBI: 5.0%還元<br>
+                                        楽天: 1.0%還元<br>
+                                        移行するだけでお得
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="benefit-card">
+                                <h4>新NISA枠の拡大</h4>
+                                <div class="benefit-number">9倍</div>
+                                <div class="benefit-text">
+                                    旧NISA: 年40万円<br>
+                                    新NISA: 年360万円<br>
+                                    SBI証券なら使い切れる
+                                </div>
+                            </div>
+                            <div class="talk-point">
+                                <h4>トークポイント</h4>
+                                <p>"今どちらの証券会社を使われていますか？楽天証券ですか？でしたら、SBI証券に移行するだけで30年で162万円分お得になりますよ。"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Talk Scripts -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="logo">SBI<span>証券</span></div>
+                <div class="slide-number">7 / 8</div>
+            </div>
+            <div class="slide-content">
+                <div class="slide-title">セグメント別 トークスクリプト</div>
+                <div class="segment-detail">
+                    <div class="talk-point">
+                        <h4>🎯 若年層向け</h4>
+                        <p>"○○さんの年齢なら、30年間投資できますよね。その間、SBI証券なら180万円分のポイントがもらえます。これは楽天証券の5倍です。180万円あれば、世界一周旅行も夢じゃありません！"</p>
+                    </div>
+                    <div class="talk-point">
+                        <h4>💼 中堅層向け</h4>
+                        <p>"○○様、10年後に退職金を受け取られますよね。対面証券だと、20年で280万円も手数料で消えてしまいます。今から付き合いのある証券会社を変えておくと、退職金運用も安心です。"</p>
+                    </div>
+                    <div class="talk-point">
+                        <h4>👴 シニア層向け</h4>
+                        <p>"○○様、年金だけでは月5万円足りないとおっしゃいましたね。SBI証券なら、その800万円をご自身で使えます。お孫さんへのお小遣いもたくさんあげられますよ。"</p>
+                    </div>
+                    <div class="talk-point">
+                        <h4>💎 富裕層向け</h4>
+                        <p>"○○様、1億円の資産をお持ちなら、手数料の差は3,000万円にもなります。3,000万円あれば、高級車を何台も買える、世界一周旅行に何度も行ける。証券会社に払うのはもったいないと思いませんか？"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Summary -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="logo">SBI<span>証券</span></div>
+                <div class="slide-number">8 / 8</div>
+            </div>
+            <div class="slide-content">
+                <div class="slide-title">セグメント別訴求の5つの鉄則</div>
+                <div class="segment-detail">
+                    <ul class="key-points-list">
+                        <li>
+                            <strong>1. 数字で具体的に示す</strong><br>
+                            抽象的な「お得です」ではなく、「162万円お得」と具体的に。<br>
+                            数字があれば、お客様は判断できる。
+                        </li>
+                        <li>
+                            <strong>2. 顧客の立場で語る</strong><br>
+                            「当社は素晴らしい」ではなく、「○○様なら〇〇万円得します」と。<br>
+                            常にお客様のメリットを最優先に。
+                        </li>
+                        <li>
+                            <strong>3. 競合との比較を明確に</strong><br>
+                            「良い」ではなく「楽天証券より144万円お得」と比較で示す。<br>
+                            差別化ポイントを明確に伝える。
+                        </li>
+                        <li>
+                            <strong>4. 不安を解消する</strong><br>
+                            お客様の懸念に先回りして対応。<br>
+                            「でも...」「しかし...」への答えを用意しておく。
+                        </li>
+                        <li>
+                            <strong>5. アクションを促す</strong><br>
+                            「検討してください」ではなく「今すぐ始めましょう」と。<br>
+                            具体的な次のステップを示し、背中を押す。
+                        </li>
+                    </ul>
+                    <div class="difference-highlight" style="margin-top: 40px;">
+                        <div style="font-size: 36px; margin-bottom: 20px;">これらの訴求ポイントを活用して</div>
+                        <div style="font-size: 48px; font-weight: bold;">SBI証券の価値を最大限に伝えましょう！</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-controls">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">◀ 前へ</button>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">次へ ▶</button>
+    </div>
+
+    <div class="progress-bar" id="progressBar"></div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+
+            updateNavigation();
+            updateProgressBar();
+        }
+
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+
+        function updateNavigation() {
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        function updateProgressBar() {
+            const progress = ((currentSlide + 1) / totalSlides) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        // キーボード操作
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+        });
+
+        // 初期化
+        updateNavigation();
+        updateProgressBar();
+    </script>
+</body>
+</html>

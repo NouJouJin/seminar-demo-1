@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBI証券の10の強み | SBI証券</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, sans-serif;
+            background: #f5f5f5;
+            overflow: hidden;
+        }
+
+        .presentation {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            display: none;
+            background: linear-gradient(135deg, #003A70 0%, #005A9C 100%);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .slide-header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #003A70;
+        }
+
+        .logo span {
+            color: #FF8C00;
+        }
+
+        .slide-number {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .slide-content {
+            flex: 1;
+            padding: 40px 60px;
+            overflow-y: auto;
+            color: white;
+        }
+
+        .slide-title {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: white;
+            border-left: 8px solid #FF8C00;
+            padding-left: 25px;
+        }
+
+        .slide-subtitle {
+            font-size: 28px;
+            margin-bottom: 40px;
+            color: #FFD700;
+            padding-left: 33px;
+        }
+
+        /* Title Slide */
+        .title-slide .slide-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .main-title {
+            font-size: 72px;
+            font-weight: bold;
+            margin-bottom: 40px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+        }
+
+        .main-subtitle {
+            font-size: 36px;
+            margin-bottom: 60px;
+            color: #FFD700;
+        }
+
+        /* Strength Cards */
+        .strength-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 0 33px;
+        }
+
+        .strength-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 35px;
+            color: #333;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            border-left: 6px solid #FF8C00;
+            transition: transform 0.3s;
+        }
+
+        .strength-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .strength-number {
+            font-size: 48px;
+            font-weight: bold;
+            color: #FF8C00;
+            margin-bottom: 15px;
+        }
+
+        .strength-card h3 {
+            color: #003A70;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .strength-card .highlight {
+            font-size: 56px;
+            font-weight: bold;
+            color: #FF8C00;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .strength-card .detail {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        /* Overview Grid */
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            margin: 20px 33px;
+        }
+
+        .overview-item {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        .overview-item:hover {
+            transform: scale(1.05);
+        }
+
+        .overview-item .number {
+            font-size: 20px;
+            font-weight: bold;
+            color: #FF8C00;
+            margin-bottom: 10px;
+        }
+
+        .overview-item .title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #003A70;
+            margin-bottom: 10px;
+        }
+
+        .overview-item .icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        /* Feature Box */
+        .feature-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 20px 33px;
+            color: #333;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .feature-comparison {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            text-align: center;
+            flex: 1;
+            padding: 20px;
+        }
+
+        .feature-item h3 {
+            color: #003A70;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .feature-value {
+            font-size: 64px;
+            font-weight: bold;
+            color: #FF8C00;
+            margin: 20px 0;
+        }
+
+        .vs-text {
+            font-size: 72px;
+            color: #FF8C00;
+            font-weight: bold;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin: 20px 33px;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .stat-box .stat-number {
+            font-size: 56px;
+            font-weight: bold;
+            color: #FF8C00;
+            margin: 20px 0;
+        }
+
+        .stat-box .stat-label {
+            font-size: 20px;
+            color: #003A70;
+            font-weight: bold;
+        }
+
+        .stat-box .stat-detail {
+            font-size: 16px;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        /* Navigation */
+        .nav-controls {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: rgba(255, 140, 0, 0.9);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .nav-btn:hover {
+            background: #FF8C00;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        .nav-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .progress-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 5px;
+            background: #FF8C00;
+            transition: width 0.3s;
+            z-index: 1000;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #FF8C00 0%, #FFA500 100%);
+            padding: 30px 60px;
+            border-radius: 15px;
+            font-size: 32px;
+            font-weight: bold;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th {
+            background: #003A70;
+            color: white;
+            padding: 15px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .comparison-table td {
+            padding: 12px;
+            font-size: 16px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .comparison-table .highlight-cell {
+            background: #FFF4E6;
+            font-weight: bold;
+            color: #FF8C00;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        <!-- Slide 1: Title -->
+        <div class="slide active title-slide">
+            <div class="slide-header">
+                <div class="logo">SBI<span>証券</span></div>
+                <div class="slide-number">1 / 7</div>
+            </div>
+            <div class="slide-content">
+                <div class="main-title">SBI証券の<br>10の圧倒的な強み</div>
+                <div class="main-subtitle">1,100万人が選んだ理由</div>
+                <div class="highlight-box">
+                    インターネットの力で、すべての人に投資の機会を
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Overview -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="logo">SBI<span>証券</span></div>
+                <div class="slide-number">2 / 7</div>
+            </div>
+            <div class="slide-content">
+                <div class="slide-title">10の圧倒的な強み</div>
+                <div class="overview-grid">
+                    <div class="overview-item">
+                        <div class="icon">👑</div>
+                        <div class="number">強み 1</div>
+                        <div class="title">口座数No.1</div>
+                        <div style="font-size: 16px; color: #666;">1,100万口座</div>
+                    </div>
+                    <div class="overview-item">
+                        <div class="icon">💰</div>
+                        <div class="number">強み 2</div>
+                        <div class="title">最低水準手数料</div>
+                        <div style="font-size: 16px; color: #666;">実質マイナス</div>
+                    </div>
+                    <div class="overview-item">
+                        <div class="icon">📊</div>
+                        <div class="number">強み 3</div>
+                        <div class="title">商品ラインナップ</div>
+                        <div style="font-size: 16px; color: #666;">2,600本以上</div>
+                    </div>
+                    <div class="overview-item">
+                        <div class="icon">💳</div>
+                        <div class="number">強み 4</div>
+                        <div class="title">クレカ積立</div>
+                        <div style="font-size: 16px; color: #666;">最大5.0%還元</div>
+                    </div>
+                    <div class="overview-item">
+                        <div class="icon">🎁</div>
+                        <div class="number">強み 5</div>
+                        <div class="title">ポイント選択</div>
+                        <div style="font-size: 16px; color: #666;">5種類から</div>
+                    </div>
+                    <div class="overview-item">
+                        <div class="icon">🚀</div>
+                        <div class="number">強み 6</div>
+                        <div class="title">IPO取扱</div>
+                        <div style="font-size: 16px; color: #666;">業界No.1</div>
+                    </div>
+                    <div class="overview-item">
+                        <div class="icon">🌏</div>
+                        <div class="number">強み 7</div>
+                        <div class="title">外国株式</div>
+                        <div style="font-size: 16px; color: #666;">9カ国対応</div>
+                    </div>
+                    <div class="overview-item">
+                        <div class="icon">⏰</div>
+                        <div class="number">強み 8</div>
+                        <div class="title">24時間取引</div>
+                        <div style="font-size: 16px; color: #666;">いつでもどこでも</div>
+                    </div>
+                    <div class="overview-item">
+                        <div class="icon">📱</div>
+                        <div class="number">強み 9</div>
+                        <div class="title">スマホアプリ</div>
+                        <div style="font-size: 16px; color: #666;">評価4.3</div>
+                    </div>
+                    <div class="overview-item">
+                        <div class="icon">📚</div>
+                        <div class="number">強み 10</div>
+                        <div class="title">投資情報充実</div>
+                        <div style="font-size: 16px; color: #666;">対面証券レベル</div>
+                    </div>
+                </div>
+                <div class="highlight-box" style="margin: 40px 33px 0;">
+                    すべてが業界トップクラス。だから1,100万人に選ばれる
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Strength 1-2 -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="logo">SBI<span>証券</span></div>
+                <div class="slide-number">3 / 7</div>
+            </div>
+            <div class="slide-content">
+                <div class="slide-title">強み 1-2: 圧倒的シェアと最低コスト</div>
+                <div class="strength-grid">
+                    <div class="strength-card">
+                        <div class="strength-number">強み 1</div>
+                        <h3>業界No.1の口座数・預かり資産</h3>
+                        <div class="highlight">1,100万口座</div>
+                        <div class="detail">
+                            <strong style="color: #003A70;">日本の約10人に1人が利用</strong><br><br>
+                            • 口座数: 1,100万口座超<br>
+                            • 預かり資産: 約40兆円<br>
+                            • 新規口座開設: 年間100万口座超<br><br>
+                            <div style="background: #FFF4E6; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                                これだけ多くの方に選ばれているのには理由があります
+                            </div>
+                        </div>
+                    </div>
+                    <div class="strength-card">
+                        <div class="strength-number">強み 2</div>
+                        <h3>業界最低水準の手数料</h3>
+                        <div class="highlight">実質マイナス</div>
+                        <div class="detail">
+                            <strong style="color: #003A70;">投資しながら稼げる！</strong><br><br>
+                            月10万円積立（30年間）:<br>
+                            • 信託報酬: ▲36万円<br>
+                            • クレカポイント還元: <span style="color: #00A040; font-weight: bold;">+180万円</span><br>
+                            • <strong style="color: #FF8C00; font-size: 24px;">実質: +144万円</strong><br><br>
+                            <div style="background: #FFF4E6; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                                対面証券との差額: 450万円！
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Strength 3-4 -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="logo">SBI<span>証券</span></div>
+                <div class="slide-number">4 / 7</div>
+            </div>
+            <div class="slide-content">
+                <div class="slide-title">強み 3-4: 豊富な商品と高還元率</div>
+                <div class="strength-grid">
+                    <div class="strength-card">
+                        <div class="strength-number">強み 3</div>
+                        <h3>圧倒的な商品ラインナップ</h3>
+                        <div class="highlight">2,600本以上</div>
+                        <div class="detail">
+                            <strong style="color: #003A70;">選択肢の広さは業界トップ</strong><br><br>
+                            • 投資信託: 2,600本以上<br>
+                            • 新NISA対応: 1,200本以上<br>
+                            • 外国株式: 9カ国対応<br>
+                            • 米国株: 約5,000銘柄<br><br>
+                            <div style="background: #FFF4E6; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                                ライフステージに応じて、すべてSBI証券一つで完結
+                            </div>
+                        </div>
+                    </div>
+                    <div class="strength-card">
+                        <div class="strength-number">強み 4</div>
+                        <h3>最大5.0%のクレカ積立還元</h3>
+                        <div class="highlight">180万円分</div>
+                        <div class="detail">
+                            <strong style="color: #003A70;">30年間の累計還元額</strong><br><br>
+                            三井住友カード プラチナプリファード:<br>
+                            • 年間還元: 60,000円分<br>
+                            • 30年累計: <span style="color: #FF8C00; font-weight: bold;">180万円分</span><br><br>
+                            <div style="background: #FFF4E6; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                                楽天証券(36万円)との差額: <strong style="color: #FF8C00;">144万円</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Strength 5-6 -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="logo">SBI<span>証券</span></div>
+                <div class="slide-number">5 / 7</div>
+            </div>
+            <div class="slide-content">
+                <div class="slide-title">強み 5-6: ポイント選択とIPO</div>
+                <div class="feature-box">
+                    <div class="strength-number" style="font-size: 36px; color: #FF8C00; text-align: center;">強み 5: 選べる5つのポイントプログラム</div>
+                    <div class="stats-grid" style="margin-top: 30px;">
+                        <div class="stat-box">
+                            <div style="font-size: 48px; margin-bottom: 15px;">V</div>
+                            <div class="stat-label">Vポイント</div>
+                            <div class="stat-detail">三井住友カード<br>支払いに充当</div>
+                        </div>
+                        <div class="stat-box">
+                            <div style="font-size: 48px; margin-bottom: 15px;">T</div>
+                            <div class="stat-label">Tポイント</div>
+                            <div class="stat-detail">全国加盟店で<br>利用可能</div>
+                        </div>
+                        <div class="stat-box">
+                            <div style="font-size: 48px; margin-bottom: 15px;">P</div>
+                            <div class="stat-label">Pontaポイント</div>
+                            <div class="stat-detail">ローソンなどで<br>利用可能</div>
+                        </div>
+                        <div class="stat-box">
+                            <div style="font-size: 48px; margin-bottom: 15px;">d</div>
+                            <div class="stat-label">dポイント</div>
+                            <div class="stat-detail">ドコモサービスで<br>利用可能</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-box" style="margin-top: 20px;">
+                    <div class="strength-number" style="font-size: 36px; color: #FF8C00; text-align: center; margin-bottom: 30px;">強み 6: IPO取扱実績No.1</div>
+                    <div class="feature-comparison">
+                        <div class="feature-item">
+                            <h3>SBI証券</h3>
+                            <div class="feature-value">89社</div>
+                            <div style="font-size: 20px; color: #666;">全IPOの91%</div>
+                        </div>
+                        <div class="vs-text">VS</div>
+                        <div class="feature-item">
+                            <h3>楽天証券</h3>
+                            <div style="font-size: 56px; font-weight: bold; color: #999; margin: 20px 0;">65社</div>
+                        </div>
+                        <div class="vs-text">VS</div>
+                        <div class="feature-item">
+                            <h3>マネックス証券</h3>
+                            <div style="font-size: 56px; font-weight: bold; color: #999; margin: 20px 0;">54社</div>
+                        </div>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #FF8C00 0%, #FFA500 100%); color: white; padding: 25px; border-radius: 12px; margin-top: 30px; text-align: center;">
+                        <div style="font-size: 24px;">2023年IPO平均初値騰落率: <strong style="font-size: 36px;">+41.2%</strong></div>
+                        <div style="font-size: 20px; margin-top: 10px;">100万円投資 → 初値売却 = 約141万円（利益41万円）</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Strength 7-10 -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="logo">SBI<span>証券</span></div>
+                <div class="slide-number">6 / 7</div>
+            </div>
+            <div class="slide-content">
+                <div class="slide-title">強み 7-10: グローバル投資と利便性</div>
+                <div class="strength-grid">
+                    <div class="strength-card">
+                        <div class="strength-number">強み 7</div>
+                        <h3>外国株式9カ国対応</h3>
+                        <div class="highlight">9カ国</div>
+                        <div class="detail">
+                            米国、中国、韓国、ロシア、ベトナム、インドネシア、シンガポール、タイ、マレーシア<br><br>
+                            <div class="comparison-table">
+                                <strong>競合比較:</strong><br>
+                                • SBI証券: <span style="color: #FF8C00; font-size: 24px;">9カ国</span><br>
+                                • 楽天証券: 6カ国<br>
+                                • マネックス: 2カ国<br>
+                                • 松井証券: 0カ国
+                            </div>
+                        </div>
+                    </div>
+                    <div class="strength-card">
+                        <div class="strength-number">強み 8</div>
+                        <h3>24時間365日取引可能</h3>
+                        <div class="highlight">24時間</div>
+                        <div class="detail">
+                            <strong style="color: #003A70;">いつでもどこでも投資</strong><br><br>
+                            • オンラインで完結<br>
+                            • 店舗訪問不要<br>
+                            • 営業時間の制約なし<br>
+                            • 深夜でも取引可能<br><br>
+                            忙しい方にも最適
+                        </div>
+                    </div>
+                    <div class="strength-card">
+                        <div class="strength-number">強み 9</div>
+                        <h3>使いやすいスマホアプリ</h3>
+                        <div class="highlight">★4.3</div>
+                        <div class="detail">
+                            <strong style="color: #003A70;">かんたん積立アプリ</strong><br><br>
+                            • 設定3分で完了<br>
+                            • 通勤中にサクッと確認<br>
+                            • 変更もワンタップ<br><br>
+                            アプリ評価業界トップクラス
+                        </div>
+                    </div>
+                    <div class="strength-card">
+                        <div class="strength-number">強み 10</div>
+                        <h3>充実した投資情報</h3>
+                        <div class="highlight">対面レベル</div>
+                        <div class="detail">
+                            <strong style="color: #003A70;">情報量は対面証券並み</strong><br><br>
+                            • アナリストレポート<br>
+                            • 四季報情報<br>
+                            • 市場動向レポート<br>
+                            • 銘柄分析ツール<br><br>
+                            コスト1/10で同レベル
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Summary -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="logo">SBI<span>証券</span></div>
+                <div class="slide-number">7 / 7</div>
+            </div>
+            <div class="slide-content">
+                <div class="slide-title">なぜSBI証券が選ばれるのか</div>
+                <div class="feature-box">
+                    <h2 style="color: #003A70; font-size: 42px; text-align: center; margin-bottom: 40px;">10の強みがすべて揃っている唯一の証券会社</h2>
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <div class="stat-label">口座数</div>
+                            <div class="stat-number">1,100万</div>
+                            <div class="stat-detail">日本人の10人に1人</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-label">投資信託</div>
+                            <div class="stat-number">2,600本</div>
+                            <div class="stat-detail">業界トップクラス</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-label">還元率</div>
+                            <div class="stat-number">5.0%</div>
+                            <div class="stat-detail">業界最高水準</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-label">IPO</div>
+                            <div class="stat-number">No.1</div>
+                            <div class="stat-detail">89社取扱（91%）</div>
+                        </div>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #003A70 0%, #005A9C 100%); color: white; padding: 40px; border-radius: 15px; margin-top: 40px; text-align: center;">
+                        <div style="font-size: 36px; margin-bottom: 25px;">SBI証券を選ぶべき決定的理由</div>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; font-size: 22px; text-align: left;">
+                            <div>
+                                <strong style="color: #FFD700;">✓ コストで選ぶなら</strong><br>
+                                実質マイナス（投資しながら稼げる）
+                            </div>
+                            <div>
+                                <strong style="color: #FFD700;">✓ 商品の豊富さで選ぶなら</strong><br>
+                                2,600本以上、9カ国の外国株式
+                            </div>
+                            <div>
+                                <strong style="color: #FFD700;">✓ ポイント還元で選ぶなら</strong><br>
+                                最大5.0%、30年で180万円分
+                            </div>
+                            <div>
+                                <strong style="color: #FFD700;">✓ 実績と信頼で選ぶなら</strong><br>
+                                1,100万口座、業界No.1の実績
+                            </div>
+                        </div>
+                        <div style="background: #FF8C00; padding: 25px; border-radius: 12px; margin-top: 30px; font-size: 32px; font-weight: bold;">
+                            今すぐSBI証券で資産形成を始めましょう！
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-controls">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">◀ 前へ</button>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">次へ ▶</button>
+    </div>
+
+    <div class="progress-bar" id="progressBar"></div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+
+            updateNavigation();
+            updateProgressBar();
+        }
+
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+
+        function updateNavigation() {
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        function updateProgressBar() {
+            const progress = ((currentSlide + 1) / totalSlides) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+        });
+
+        updateNavigation();
+        updateProgressBar();
+    </script>
+</body>
+</html>
