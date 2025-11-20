@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新NISA投資信託 営業資料 | SBI証券</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, sans-serif;
+            background: linear-gradient(135deg, #003A70 0%, #005A9C 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            padding: 60px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .logo {
+            font-size: 64px;
+            font-weight: bold;
+            color: #003A70;
+            margin-bottom: 20px;
+        }
+
+        .logo span {
+            color: #FF8C00;
+        }
+
+        .header h1 {
+            color: #003A70;
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 20px;
+        }
+
+        .presentations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .presentation-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 15px;
+            padding: 35px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid #e0e0e0;
+            cursor: pointer;
+        }
+
+        .presentation-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(255, 140, 0, 0.3);
+            border-color: #FF8C00;
+        }
+
+        .presentation-card .icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .presentation-card h2 {
+            color: #003A70;
+            font-size: 26px;
+            margin-bottom: 15px;
+        }
+
+        .presentation-card p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .presentation-card .button {
+            display: inline-block;
+            background: linear-gradient(135deg, #FF8C00 0%, #FFA500 100%);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: transform 0.3s;
+        }
+
+        .presentation-card .button:hover {
+            transform: scale(1.05);
+        }
+
+        .info-box {
+            background: #FFF4E6;
+            border-left: 5px solid #FF8C00;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 40px;
+        }
+
+        .info-box h3 {
+            color: #003A70;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .info-box p {
+            color: #333;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .info-box .password {
+            display: inline-block;
+            background: #003A70;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 24px;
+            letter-spacing: 3px;
+            margin: 10px 0;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+            color: #666;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px;
+            }
+
+            .logo {
+                font-size: 48px;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .presentations {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">SBI<span>証券</span></div>
+            <h1>新NISA投資信託 営業資料</h1>
+            <p>パスワードで保護された営業プレゼンテーション</p>
+        </div>
+
+        <div class="presentations">
+            <div class="presentation-card" onclick="window.location.href='競合他社比較分析.html'">
+                <div class="icon">📊</div>
+                <h2>競合他社比較分析</h2>
+                <p>SBI証券と主要競合他社（楽天証券、マネックス証券など）との詳細比較。30年で最大950万円の差を具体的な数字で提示。</p>
+                <a href="競合他社比較分析.html" class="button">資料を開く →</a>
+            </div>
+
+            <div class="presentation-card" onclick="window.location.href='セグメント別訴求ポイント.html'">
+                <div class="icon">🎯</div>
+                <h2>セグメント別訴求ポイント</h2>
+                <p>6つの顧客セグメント（若年層、中堅層、シニア層、富裕層、初心者、既存NISA利用者）別の最適な営業アプローチとトークスクリプト。</p>
+                <a href="セグメント別訴求ポイント.html" class="button">資料を開く →</a>
+            </div>
+
+            <div class="presentation-card" onclick="window.location.href='SBI証券の10の強み.html'">
+                <div class="icon">💪</div>
+                <h2>SBI証券の10の強み</h2>
+                <p>1,100万口座、最大5.0%還元、2,600本の投資信託、IPO取扱No.1など、SBI証券の圧倒的な優位性を分かりやすく説明。</p>
+                <a href="SBI証券の10の強み.html" class="button">資料を開く →</a>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>🔒 パスワードについて</h3>
+            <p>全ての資料はパスワードで保護されています。<br>
+            アクセス時に以下のパスワードを入力してください：</p>
+            <div class="password">sbi</div>
+            <p style="margin-top: 15px; font-size: 16px;">
+                ※ パスワードは小文字で入力してください<br>
+                ※ 一度認証すると、ブラウザを閉じるまで再入力は不要です
+            </p>
+        </div>
+
+        <div class="footer">
+            <p>© 2024 SBI証券 | 新NISA投資信託営業資料</p>
+            <p style="margin-top: 10px;">本資料は社外秘です。社外への配布・共有は禁止されています。</p>
+        </div>
+    </div>
+</body>
+</html>
