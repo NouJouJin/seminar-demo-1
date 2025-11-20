@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新NISA投資信託 営業資料 | SBI証券</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, sans-serif;
+            background: linear-gradient(135deg, #003A70 0%, #005A9C 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .password-container {
+            max-width: 600px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            padding: 60px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 72px;
+            font-weight: bold;
+            color: #003A70;
+            margin-bottom: 30px;
+        }
+
+        .logo span {
+            color: #FF8C00;
+        }
+
+        h1 {
+            color: #003A70;
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .description {
+            background: #F8F9FA;
+            border-left: 5px solid #FF8C00;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            margin-bottom: 40px;
+        }
+
+        .description h3 {
+            color: #003A70;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .description ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .description li {
+            color: #333;
+            font-size: 16px;
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .description li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #FF8C00;
+            font-weight: bold;
+        }
+
+        .password-box {
+            margin-top: 40px;
+        }
+
+        .password-box h2 {
+            color: #003A70;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 18px 25px;
+            font-size: 20px;
+            border: 3px solid #ddd;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s;
+            text-align: center;
+            letter-spacing: 3px;
+        }
+
+        .password-input:focus {
+            outline: none;
+            border-color: #FF8C00;
+        }
+
+        .password-input.error {
+            border-color: #FF4444;
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .password-btn {
+            width: 100%;
+            padding: 18px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(135deg, #FF8C00 0%, #FFA500 100%);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
+        }
+
+        .password-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 140, 0, 0.4);
+        }
+
+        .error-message {
+            color: #FF4444;
+            font-size: 16px;
+            margin-top: 15px;
+            display: none;
+            font-weight: bold;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+            color: #666;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .password-container {
+                padding: 40px 30px;
+            }
+
+            .logo {
+                font-size: 56px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="password-container">
+        <div class="logo">SBI<span>証券</span></div>
+        <h1>新NISA投資信託 営業資料</h1>
+        <p class="subtitle">パスワードで保護された営業プレゼンテーション</p>
+
+        <div class="description">
+            <h3>📊 収録コンテンツ</h3>
+            <ul>
+                <li>競合他社比較分析（8スライド）</li>
+                <li>セグメント別訴求ポイント（8スライド）</li>
+                <li>SBI証券の10の強み（7スライド）</li>
+            </ul>
+        </div>
+
+        <div class="password-box">
+            <h2>パスワード入力</h2>
+            <input
+                type="password"
+                class="password-input"
+                id="passwordInput"
+                placeholder="パスワードを入力"
+                autocomplete="off"
+                maxlength="10">
+            <button class="password-btn" onclick="checkPassword()">アクセス</button>
+            <div class="error-message" id="errorMessage">パスワードが正しくありません</div>
+        </div>
+
+        <div class="footer">
+            <p>© 2024 SBI証券 | 新NISA投資信託営業資料</p>
+            <p style="margin-top: 10px;">本資料は社外秘です。社外への配布・共有は禁止されています。</p>
+        </div>
+    </div>
+
+    <script>
+        const correctPassword = 'sbi';
+
+        // Check if already authenticated in this session
+        if (sessionStorage.getItem('authenticated') === 'true') {
+            window.location.href = 'presentations/index.html';
+        }
+
+        function checkPassword() {
+            const input = document.getElementById('passwordInput');
+            const errorMsg = document.getElementById('errorMessage');
+
+            if (input.value === correctPassword) {
+                // Correct password
+                sessionStorage.setItem('authenticated', 'true');
+                window.location.href = 'presentations/index.html';
+            } else {
+                // Wrong password
+                errorMsg.classList.add('show');
+                input.classList.add('error');
+                input.value = '';
+                input.focus();
+
+                // Remove error animation after it completes
+                setTimeout(() => {
+                    input.classList.remove('error');
+                }, 500);
+            }
+        }
+
+        // Allow Enter key to submit
+        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+
+        // Focus on password input when page loads
+        window.addEventListener('load', function() {
+            document.getElementById('passwordInput').focus();
+        });
+    </script>
+</body>
+</html>
